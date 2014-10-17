@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'spree_pdf_generator' , git: 'https://github.com/PhoenixTeam/spree_pdf_generator'
+
 group :development, :test do
   spree_branch = '2-3-stable'
   gem 'spree',                  github: 'spree/spree',                  branch: spree_branch
@@ -10,5 +12,6 @@ group :development, :test do
   gem 'spree_group_pricing',    github: 'jdutil/spree_group_pricing',   branch: spree_branch
   gem 'spree_related_products', github: 'spree/spree_related_products', branch: spree_branch
 end
+
 
 gemspec
