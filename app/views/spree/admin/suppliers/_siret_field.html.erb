@@ -1,0 +1,5 @@
+<%= form.field_container :siret do %>
+  <%= form.label :siret, Spree::Supplier.human_attribute_name(:siret) %>:<br />
+  <%= form.text_field :siret, :class => 'fullwidth text' %>
+  <%= f.error_message_on :siret %>
+<% end %>

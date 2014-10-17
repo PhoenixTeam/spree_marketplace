@@ -1,5 +1,6 @@
 Spree::Admin::ProductsController.class_eval do
 
+  before_filter :check_if_cgv_aggreed
   create.after :set_supplier
 
   private

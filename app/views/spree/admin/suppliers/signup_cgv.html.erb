@@ -1,0 +1,11 @@
+<% content_for :head do %>
+<meta name="title" content="<%= Spree.t(:supplier_signup) %>">
+<% end %>
+
+<%= render 'spree/shared/error_messages', :target => @supplier %>
+
+<h1 class="twelve columns" align="center" style="margin: 10px 10px 50px 10px"><%= Spree.t(:supplier_signup) %></h1>
+
+<%= form_for [:admin, @object], url: {action: "update_from_cgv"} do |form| %>
+	<%= render "form_signup_cgv", form: form %>
+<% end %>

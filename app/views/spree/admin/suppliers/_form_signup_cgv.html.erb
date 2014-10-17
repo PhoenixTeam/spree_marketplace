@@ -1,0 +1,39 @@
+<div data-hook="supplier_address_wrapper" class="alpha six columns">
+  <fieldset align="center" class="no-border-bottom">
+    <legend align="center"><%= Spree.t('contact_address') %></legend>
+    <%= form.fields_for :address do |contact_form| %>
+      <%= render :partial => 'spree/admin/shared/address_form', :locals => { :f => contact_form, :name => Spree.t(:contact_address), :type => "shipping" } %>
+    <% end %>
+  </fieldset>
+</div>
+
+<div data-hook="supplier_details_wrapper" class="alpha six columns">
+  <fieldset class="no-border-bottom">
+    <legend align="center"><%= Spree.t('supplier_details') %></legend>
+    <%= form.field_container :name do %>
+      <%= form.label :name, Spree::Supplier.human_attribute_name(:name) %><span class="required">*</span><br />
+      <%= form.text_field :name, :class => 'fullwidth title' %>
+    <% end %>
+    <%= form.field_container :email do %>
+      <%= form.label :email, Spree::Supplier.human_attribute_name(:email) %><span class="required">*</span><br />
+      <%= form.email_field :email, :class => 'email fullwidth text' %>
+    <% end %>
+    <%= form.field_container :url do %>
+      <%= form.label :url, Spree::Supplier.human_attribute_name(:url) %><br />
+      <%= form.text_field :url, :class => 'fullwidth text' %>
+    <% end %>
+    <%= form.field_container :tax_id do %>
+      <%= form.label :tax_id, Spree::Supplier.human_attribute_name(:tax_id) %><br />
+      <%= form.text_field :tax_id, :class => 'fullwidth text' %>
+    <% end %>
+    <%= form.field_container :siret do %>
+      <%= form.label :siret, Spree::Supplier.human_attribute_name(:siret) %><span class="required">*</span><br />
+      <%= form.text_field :siret, :class => 'fullwidth text' %>
+    <% end %>
+  </fieldset>
+
+  <div class='right'>
+    <%= button Spree.t('update') %>
+  </div>
+
+</div>

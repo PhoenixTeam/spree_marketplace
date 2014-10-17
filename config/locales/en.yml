@@ -5,10 +5,61 @@ en:
   add_bank_account: Add Bank Account
   bank_accounts: Bank Accounts
   new_bank_account: New Bank Account
+  header_title: "Terms and Conditions"
   spree:
     admin:
       marketplace_settings:
           update:
             success: Marketplace settings successfully updated.
+    siret: siret
+    cgv_term_agreement: "I agree to the Phoenix Inc. Terms of Service and Privacy Policy"
+    cgv_label: "Terms and Conditions"
+    supplier_name: "Supplier's Name"
+    supplier_info_summary: "Supplier Info Summary"
     contacts_first_name: "Contact's First Name"
     contacts_last_name: "Contact's Last Name"
+    header_title: "Terms and Conditions"
+    footer_left: "Phoenix Empire, Earning by sharing"
+    footer_center: "find us: www.inspishop.com"
+    footer_right: "join us: contact@inspishop.com"
+    cgv_contract: |
+        CONTRAT DE PARTENARIAT MARCHAND
+
+        CONDITIONS GENERALES D’ADHESION A LA PLATEFORME
+
+        La société PHOENIX APP, Société par action simplifié au capital social
+
+        de 1000 euros, dont le siège social est situé au 124 boulevard auguste
+
+        Blanqui 75013 Paris, immatriculée au RCS de Paris sous le numéro ZZZZ,
+
+        représentée par Monsieur Nicolas Abib, dûment habilité à cet effet.
+
+        ET :
+
+        La société %{company_name} (SIRET : XXXX) représenté par %{firstname} %{lastname} ayant pris
+
+        connaissance de ce présent contrat exposant les conditions générales
+
+        d’adhésion ainsi que les conditions particulières.
+
+        Ci-après désignées ensemble les « Parties » ou la « Partie »
+
+        1. PHOENIX APP a créé et mis en place une Plateforme électronique,
+
+        intermédiaire technique mettant en relation des personnes morales ou
+
+        physiques professionnelles souhaitant présenter et vendre leurs Produits via
+
+        la Plateforme à des acheteurs, personnes physiques ou morales.
+
+        2. Le Vendeur est une personne morale ou physique, professionnel de
+
+        la vente à distance qui souhaite être référencé via la Plateforme afin de
+
+        présenter ses Produits ou services à la vente.
+
+        L’ensemble des termes utilisés dans le présent document sont définis aux
+
+        Conditions Générales.
+

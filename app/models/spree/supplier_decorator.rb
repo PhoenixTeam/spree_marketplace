@@ -1,14 +1,21 @@
 Spree::Supplier.class_eval do
 
-  attr_accessor :first_name, :last_name, :merchant_type
+  attr_accessor :first_name, :last_name, :merchant_type, :siret
 
   has_many :bank_accounts, class_name: 'Spree::SupplierBankAccount'
 
   validates :tax_id, length: { is: 9, allow_blank: true }
+  validates :siret, numericality: true, length: { is: 9, allow_blank: false }, :on => :update
 
   before_create :assign_name
   before_create :stripe_recipient_setup
   before_save :stripe_recipient_update
+
+  def update_details(permitted_resource_params)
+    ret = self.update_attributes(permitted_resource_params)
+    self.update_column(:siret, self.siret = permitted_resource_params[:siret]) if ret
+    return ret
+  end
 
   private
 
@@ -26,7 +33,7 @@ Spree::Supplier.class_eval do
       :type => (self.merchant_type == 'business' ? 'corporation' : "individual"),
       :email => self.email,
       :bank_account => self.bank_accounts.first.try(:token)
-    )
+      )
 
     if new_record?
       self.token = recipient.id

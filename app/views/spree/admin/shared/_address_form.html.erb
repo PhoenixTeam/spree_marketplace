@@ -1,0 +1,70 @@
+<% s_or_b = type.chars.first %>
+
+<div id="<%= type %>" data-hook="address_fields">
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :firstname, Spree.t(:first_name) %><span class="required">*</span><br />
+    <%= f.text_field :firstname, :class => 'required fullwidth title' %>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :lastname, Spree.t(:last_name) %><span class="required">*</span><br />
+    <%= f.text_field :lastname, :class => 'required fullwidth text' %>
+  </div>
+
+  <% if Spree::Config[:company] %>
+    <div class="field <%= "#{type}-row" %>">
+      <%= f.label :company, Spree.t(:company) %><span class="required">*</span><br />
+      <%= f.text_field :company, :class => 'required fullwidth' %>
+    </div>
+  <% end %>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :address1, Spree.t(:street_address) %><span class="required">*</span><br />
+    <%= f.text_field :address1, :class => 'required fullwidth' %>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :address2, Spree.t(:street_address_2) %>
+    <%= f.text_field :address2, :class => 'fullwidth' %>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :city, Spree.t(:city) %><span class="required">*</span><br />
+    <%= f.text_field :city, :class => 'required fullwidth' %>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :zipcode, Spree.t(:zip) %><span class="required">*</span><br />
+    <%= f.text_field :zipcode, :class => 'required fullwidth' %>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :country_id, Spree.t(:country) %><span class="required">*</span><br />
+    <span id="<%= s_or_b %>country">
+      <%= f.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'select2 required fullwidth'} %>
+    </span>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :state_id, Spree.t(:state) %><span class="required">*</span><br />
+    <span id="<%= s_or_b %>state">
+      <%= f.text_field :state_name,
+            :style => "display: #{f.object.country.states.empty? ? 'block' : 'none' };",
+           :disabled => !f.object.country.states.empty?, :class => 'required fullwidth state_name' %>
+      <%= f.collection_select :state_id, f.object.country.states.sort, :id, :name, {:include_blank => true}, {:class => 'select2 required fullwidth', :style => "display: #{f.object.country.states.empty? ? 'none' : 'block' };", :disabled => f.object.country.states.empty?} %>
+    </span>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :phone, Spree.t(:phone) %><span class="required">*</span><br />
+    <%= f.phone_field :phone, :class => 'required fullwidth' %>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <%= javascript_tag do -%>
+    $(document).ready(function(){
+      $('span#<%= s_or_b %>country .select2').on('change', function() { update_state('<%= s_or_b %>'); });
+    });
+  <% end -%>
+<% end %>

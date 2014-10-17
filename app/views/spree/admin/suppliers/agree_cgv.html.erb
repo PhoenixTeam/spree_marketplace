@@ -1,0 +1,44 @@
+<% content_for :head do %>
+<meta name="title" content="<%= Spree.t(:cgv_label) %>">
+<% end %>
+
+<h1 class="twelve columns" align="center" style="margin: 10px 10px 50px 10px"><%= Spree.t(:cgv_label) %></h1>
+
+<%= render 'spree/shared/error_messages', :target => @supplier %>
+
+<%= form_for [:admin, @object], url: {action: "confirm_cgv"} do |form| %>
+
+  <div data-hook="supplier_cgv_contract_wrapper" class="fourteen columns">
+    <div>
+      <h5><%= Spree.t(:supplier_info_summary) %></h5><br/>
+      <div style="margin: 0 0 30px 40px">
+
+        <%= form.label :name, Spree.t(:supplier_name) %> :
+        <%= @supplier.name %><br/>
+
+        <%= form.label :email, Spree::Supplier.human_attribute_name(:email) %> :
+        <%= @supplier.email %><br/>
+
+        <%= form.label :firstname, Spree.t(:first_name) %> :
+        <%= @supplier.address.firstname %><br/>
+
+        <%= form.label :lastname, Spree.t(:last_name) %> :
+        <%= @supplier.address.lastname %><br/>
+
+      </div>
+    </div>
+    <div style="height: 700px">
+      <%= render :partial => 'spree/admin/embedded_pdf' %>
+    </div>
+    <div style="margin-top: 15px">
+      <%= form.field_container :agreed_cgv do %>
+        <%= hidden_field_tag :agreed_cgv, '' %>
+        <%= check_box_tag :agreed_cgv %>
+        <%= form.label :agreed_cgv, Spree.t(:cgv_term_agreement) %>
+      <% end %>
+    </div>
+    <div class='left'>
+      <%= button Spree.t('validate') %>
+    </div>
+  </div>
+<% end %>

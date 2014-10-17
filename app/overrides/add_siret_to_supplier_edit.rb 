@@ -1,0 +1,5 @@
+Deface::Override.new(:virtual_path => 'spree/admin/suppliers/_form',
+  :name => 'add_siret_to_supplier_edit',
+  :insert_top => "erb[loud]:contains('text_field :tax_id')",
+  :partial => "spree/admin/suppliers/siret_field",
+  :disabled => false)
