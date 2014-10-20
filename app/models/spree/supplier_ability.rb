@@ -49,6 +49,9 @@ module Spree
         can [:admin, :manage], Spree::StockMovement, stock_item: { stock_location_id: user.supplier.stock_locations.pluck(:id) }
         can :create, Spree::StockMovement
         can [:admin, :update, :signup_cgv, :agree_cgv, :update_from_cgv, :confirm_cgv, :show, :contract], Spree::Supplier, id: user.supplier_id
+        # Allow suppliers to create product variants.
+        # TODO: allow edit of their own variants only.
+        can [:create, :update, :destroy], Spree::Variant
         # TODO: Want this to be inline like:
         # can [:admin, :manage], Spree::Variant, supplier_ids: user.supplier_id
         can [:admin, :manage], Spree::Variant do |variant|
