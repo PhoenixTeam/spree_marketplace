@@ -10,11 +10,11 @@
 
 <%= form_for @object, url: spree.admin_supplier_bank_accounts_path(@supplier) do |f| %>
   <%= f.field_container :account_number do %>
-    <%= f.label :account_number %>:<br />
+    <%= f.label :account_number, Spree.t(:account_number) %>:<br />
     <%= f.text_field :account_number %>
   <% end %>
   <%= f.field_container :routing_number do %>
-    <%= f.label :routing_number %>:<br />
+    <%= f.label :routing_number, Spree.t(:routing_number) %>:<br />
     <%= f.text_field :routing_number %>
   <% end %>
   <%= f.field_container :country_iso do %>
